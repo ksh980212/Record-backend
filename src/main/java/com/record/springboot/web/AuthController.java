@@ -1,6 +1,7 @@
 package com.record.springboot.web;
 
 import com.record.springboot.service.AuthService;
+import com.record.springboot.web.dto.AuthLoginRequestDto;
 import com.record.springboot.web.dto.AuthSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,5 +17,10 @@ public class AuthController {
   @PostMapping("/auth/v1/signUp")
   public Long signUp(@RequestBody AuthSaveRequestDto requestDto){
     return authService.signUp(requestDto);
+  }
+
+  @PostMapping("/auth/v1/login")
+  public Long login(@RequestBody AuthLoginRequestDto requestDto)  {
+    return authService.login(requestDto).get();
   }
 }
