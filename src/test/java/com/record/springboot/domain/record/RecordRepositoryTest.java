@@ -27,10 +27,12 @@ public class RecordRepositoryTest {
     // given
     String title = "title";
     String content = "content";
+    String iconColor = "primary";
 
     recordRepository.save(Record.builder()
         .title(title)
         .content(content)
+        .iconColor(iconColor)
         .build()
     );
     List<Record> recordList = recordRepository.findAll();
@@ -41,5 +43,6 @@ public class RecordRepositoryTest {
     // then
     assertThat(record.getTitle()).isEqualTo(title);
     assertThat(record.getContent()).isEqualTo(content);
+    assertThat(record.getIconColor()).isEqualTo(iconColor);
   }
 }
