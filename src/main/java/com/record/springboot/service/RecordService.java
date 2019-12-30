@@ -24,4 +24,9 @@ public class RecordService {
   public List<Record> findAll(Sort sort){
     return recordRepository.findAll(sort);
   }
+
+  @Transactional
+  public void deleteById(Long id){
+    recordRepository.deleteById(id);
+  }
 }

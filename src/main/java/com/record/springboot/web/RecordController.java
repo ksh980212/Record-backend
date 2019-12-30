@@ -7,9 +7,11 @@ import com.record.springboot.web.dto.RecordSaveRequestDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -26,5 +28,10 @@ public class RecordController {
   @GetMapping("/api/v1/record")
   public List<Record> findAll(Sort sort){
     return recordService.findAll(sort);
+  }
+
+  @DeleteMapping("/api/v1/record")
+  public void deleteById(@RequestParam Long id){
+    recordService.deleteById(id);
   }
 }
