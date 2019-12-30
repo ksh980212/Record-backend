@@ -16,6 +16,10 @@ public class AuthController {
 
   @PostMapping("/auth/v1/signUp")
   public Long signUp(@RequestBody AuthSaveRequestDto requestDto){
+    if(authService.findByEmail(requestDto).isPresent()){
+      throw new IllegalArgumentException("already exists");
+    }
+
     return authService.signUp(requestDto);
   }
 

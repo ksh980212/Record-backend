@@ -26,8 +26,8 @@ public class RecordController {
   }
 
   @GetMapping("/api/v1/record")
-  public List<Record> findAll(Sort sort){
-    return recordService.findAll(sort);
+  public List<Record> findAll(Sort sort, @RequestParam("user") Long user){
+    return recordService.findAll(sort, user);
   }
 
   @DeleteMapping("/api/v1/record")

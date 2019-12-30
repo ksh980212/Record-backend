@@ -1,5 +1,6 @@
 package com.record.springboot.service;
 
+import com.record.springboot.domain.auth.User;
 import com.record.springboot.domain.auth.UserRepository;
 import com.record.springboot.web.dto.AuthLoginRequestDto;
 import com.record.springboot.web.dto.AuthSaveRequestDto;
@@ -17,6 +18,11 @@ public class AuthService {
   @Transactional
   public Long signUp(AuthSaveRequestDto requestDto){
     return userRepository.save(requestDto.toEntity()).getId();
+  }
+
+  @Transactional
+  public Optional<User> findByEmail(AuthSaveRequestDto requestDto){
+    return userRepository.findByEmail(requestDto.getEmail());
   }
 
   @Transactional

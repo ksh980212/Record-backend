@@ -19,6 +19,10 @@ public class Record extends BaseTimeEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(nullable = false)
+  //fk 설정 해야댐
+  private Long user;
+
   @Column(length = 50, nullable = false)
   private String title;
 
@@ -29,9 +33,10 @@ public class Record extends BaseTimeEntity {
   private String iconColor;
 
   @Builder
-  public Record(String title, String content, String iconColor){
+  public Record(String title, String content, String iconColor, Long user){
     this.title = title;
     this.content = content;
     this.iconColor = iconColor;
+    this.user = user;
   }
 }

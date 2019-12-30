@@ -1,5 +1,6 @@
 package com.record.springboot.domain.auth;
 
+import com.record.springboot.web.dto.AuthSaveRequestDto;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,4 +10,6 @@ public interface UserRepository  extends JpaRepository<User, Long> {
 
   @Query("select u.id from User u  where u.email = :email AND u.password = :password")
   Optional<Long> login(@Param("email")String email, @Param("password") String password);
+
+  Optional<User> findByEmail(String email);
 }
