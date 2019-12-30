@@ -1,9 +1,0 @@
-# Created by .ignore support plugin (hsz.mobi)
-
-../../Desktop/springboot/freelec-springboot2-webservice/.gradle
-.idea
-
-# Project exclude paths
-/.gradle/
-/build/
-/build/classes/java/main/
