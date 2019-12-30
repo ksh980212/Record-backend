@@ -10,4 +10,5 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 
   @Query("select r from Record r where r.user = :user")
   List<Record> findAll(Sort sort, @Param("user") Long user);
+  //JPA 책 사서 공부 해야할듯 싶음.
 }

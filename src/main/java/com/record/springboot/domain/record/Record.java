@@ -31,6 +31,7 @@ public class Record extends BaseTimeEntity {
 
   @Column(length= 20, nullable = false)
   private String iconColor;
+  // enum으로 빼면 4가지 색깔만 선택할수 있을듯
 
   @Builder
   public Record(String title, String content, String iconColor, Long user){

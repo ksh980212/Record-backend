@@ -27,10 +27,12 @@ public class RecordController {
 
   @GetMapping("/api/v1/record")
   public List<Record> findAll(Sort sort, @RequestParam("user") Long user){
+    //이거 좀 바꿔야함! 이상함
     return recordService.findAll(sort, user);
   }
 
   @DeleteMapping("/api/v1/record")
+  // 기본 record 삭제하면 ID 중복되서 삭제 불가.
   public void deleteById(@RequestParam Long id){
     recordService.deleteById(id);
   }

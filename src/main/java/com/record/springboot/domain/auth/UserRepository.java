@@ -1,6 +1,5 @@
 package com.record.springboot.domain.auth;
 
-import com.record.springboot.web.dto.AuthSaveRequestDto;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
