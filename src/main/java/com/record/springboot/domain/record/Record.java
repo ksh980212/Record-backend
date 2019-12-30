@@ -19,15 +19,19 @@ public class Record extends BaseTimeEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(length = 50)
+  @Column(length = 50, nullable = false)
   private String title;
 
-  @Column(length = 200)
+  @Column(length = 200, nullable = false)
   private String content;
 
+  @Column(length= 20, nullable = false)
+  private String iconColor;
+
   @Builder
-  public Record(String title, String content){
+  public Record(String title, String content, String iconColor){
     this.title = title;
     this.content = content;
+    this.iconColor = iconColor;
   }
 }
