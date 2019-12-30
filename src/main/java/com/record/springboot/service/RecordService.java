@@ -21,8 +21,8 @@ public class RecordService {
   }
 
   @Transactional
-  public List<Record> findAll(Sort sort){
-    return recordRepository.findAll(sort);
+  public List<Record> findAll(Sort sort, Long user){
+    return recordRepository.findAll(sort, user);
   }
 
   @Transactional
