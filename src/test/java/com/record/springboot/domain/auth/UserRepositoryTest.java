@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,19 +43,34 @@ public class UserRepositoryTest {
   }
 
   @Test
-  public void 잘못된_이메일_형식이_들어오면_에러발생한다(){
+  public void 이메일_정규식이_정삭작동한다(){
     //given
-    String email="         ";
-    String password="test";
+    String email="admin@admin";
 
-    userRepository.save(User.builder()
-        .email(email)
-        .password(password)
-        .build()
-    );
+    // when & then
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      userRepository.save(User.builder()
+          .email(email)
+          .password("adaf1232131d")
+          .build()
+      );
+    });
 
-    //when
+  }
 
+  @Test
+  public void 비밀번호_정규식이_정상작동한다(){
+    //given
+    String password = "111111111";
+
+    // when & then
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      userRepository.save(User.builder()
+          .email("admin@admin.com")
+          .password(password)
+          .build()
+      );
+    });
 
   }
 }

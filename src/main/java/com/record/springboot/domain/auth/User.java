@@ -33,12 +33,23 @@ public class User extends BaseTimeEntity {
   }
 
   private void validateUserInput(String email, String password){
-    if(email.trim() == "" || email == "undefined"){
-      throw new IllegalArgumentException("Email Input Error");
-    }
+    validateIsEmailPattern(email);
+    validateIsPasswordPattern(password);
+  }
 
-    if(password.trim() == "" || password == "undefined"){
-      throw new IllegalArgumentException("Password Input Error");
+  private void validateIsEmailPattern(String email){
+    String regExp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+
+    if(!email.matches(regExp)){
+      throw new IllegalArgumentException("Email Pattern Error");
+    }
+  }
+
+  private void validateIsPasswordPattern(String password){
+    String regExp= "^(?=.*[A-Za-z])(?=.*)[A-Za-z]{8,}$";
+
+    if(!password.matches(regExp)){
+      throw new IllegalArgumentException("Password Pattern Error");
     }
   }
 }

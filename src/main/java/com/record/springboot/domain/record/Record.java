@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,6 @@ public class Record extends BaseTimeEntity {
   private Long id;
 
   @Column(nullable = false)
-  //fk 설정 해야댐
   private Long user;
 
   @Column(length = 50, nullable = false)
