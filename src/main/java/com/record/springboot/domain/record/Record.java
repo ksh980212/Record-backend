@@ -3,6 +3,8 @@ package com.record.springboot.domain.record;
 import com.record.springboot.domain.BaseTimeEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,14 +32,14 @@ public class Record extends BaseTimeEntity {
   private String content;
 
   @Column(length= 20, nullable = false)
-  private String iconColor;
-  // enum으로 빼면 4가지 색깔만 선택할수 있을듯
+  @Enumerated(EnumType.STRING)
+  private IconColor iconColor;
 
   @Builder
   public Record(String title, String content, String iconColor, Long user){
     this.title = title;
     this.content = content;
-    this.iconColor = iconColor;
+    this.iconColor = IconColor.of(iconColor);
     this.user = user;
   }
 }
