@@ -2,7 +2,6 @@ package com.record.springboot.web;
 
 import com.record.springboot.domain.record.Record;
 import com.record.springboot.service.RecordService;
-import com.record.springboot.web.dto.RecordLoadResponseDto;
 import com.record.springboot.web.dto.RecordSaveRequestDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

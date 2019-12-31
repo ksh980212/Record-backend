@@ -23,20 +23,20 @@ public class UserRepositoryTest {
     //given
     String email = "test@test.com";
     String password = "password";
+    String role = "guest";
 
     userRepository.save(User.builder()
         .email(email)
         .password(password)
+        .role(role)
         .build()
     );
 
     //when
-
     List<User> userList = userRepository.findAll();
     User user = userList.get(0);
 
     //then
-
     assertThat(user.getEmail()).isEqualTo(email);
     assertThat(user.getPassword()).isEqualTo(password);
 
@@ -52,6 +52,7 @@ public class UserRepositoryTest {
       userRepository.save(User.builder()
           .email(email)
           .password("adaf1232131d")
+          .role("guest")
           .build()
       );
     });
@@ -61,16 +62,16 @@ public class UserRepositoryTest {
   @Test
   public void 비밀번호_정규식이_정상작동한다(){
     //given
-    String password = "111111111";
+    String password = "111111";
 
     // when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
       userRepository.save(User.builder()
           .email("admin@admin.com")
           .password(password)
+          .role("guest")
           .build()
       );
     });
-
   }
 }
