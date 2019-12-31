@@ -45,7 +45,28 @@ public class RecordRepositoryTest {
     // then
     assertThat(record.getTitle()).isEqualTo(title);
     assertThat(record.getContent()).isEqualTo(content);
-    assertThat(record.getIconColor()).isEqualTo(iconColor);
+    assertThat(record.getIconColor()).isEqualTo(IconColor.PRIMARY);
     assertThat(record.getUser()).isEqualTo(user);
+  }
+
+  @Test
+  public void 항목에_없는_아이콘색상이오면_PRIMARY로_대체한다() {
+    //given
+    String iconColor = "anything";
+
+    recordRepository.save(Record.builder()
+        .title("title")
+        .content("content")
+        .iconColor(iconColor)
+        .user(1L)
+        .build()
+    );
+    List<Record> recordList = recordRepository.findAll();
+
+    //when
+    Record record = recordList.get(0);
+
+    //then
+    assertThat(record.getIconColor()).isEqualTo(IconColor.PRIMARY);
   }
 }

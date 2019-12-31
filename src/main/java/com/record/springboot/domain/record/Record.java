@@ -3,9 +3,12 @@ package com.record.springboot.domain.record;
 import com.record.springboot.domain.BaseTimeEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +23,6 @@ public class Record extends BaseTimeEntity {
   private Long id;
 
   @Column(nullable = false)
-  //fk 설정 해야댐
   private Long user;
 
   @Column(length = 50, nullable = false)
@@ -30,13 +32,14 @@ public class Record extends BaseTimeEntity {
   private String content;
 
   @Column(length= 20, nullable = false)
-  private String iconColor;
+  @Enumerated(EnumType.STRING)
+  private IconColor iconColor;
 
   @Builder
   public Record(String title, String content, String iconColor, Long user){
     this.title = title;
     this.content = content;
-    this.iconColor = iconColor;
+    this.iconColor = IconColor.of(iconColor);
     this.user = user;
   }
 }
